@@ -1,0 +1,745 @@
+ <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        cream: {
+                            50: '#FAF8F5',
+                            100: '#F5F0E6',
+                            200: '#EBDCC5',
+                        },
+                        espresso: {
+                            800: '#2A1B15',
+                            900: '#1C110D',
+                        },
+                        bronze: {
+                            DEFAULT: '#A37F55',
+                            dark: '#85643E',
+                            light: '#C2A37E',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar matching aesthetic */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A37F55;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-espresso-900 font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cream-50/80 backdrop-blur-md border-b border-cream-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-2xl tracking-widest text-espresso-900 font-bold">
+                NIVAROLI<span class="text-bronze">.</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-10 text-sm tracking-wider uppercase font-medium">
+                <a href="#storia" class="hover:text-bronze transition-colors">La Storia</a>
+                <a href="#evoluzione" class="hover:text-bronze transition-colors">L'Evoluzione</a>
+                <a href="#rituale" class="hover:text-bronze transition-colors">Il Rituale</a>
+                <a href="#assaggi" class="hover:text-bronze transition-colors">I Voli d'Assaggio</a>
+                <a href="#prenota" class="px-5 py-2.5 bg-espresso-900 text-cream-50 hover:bg-bronze transition-all rounded-full text-xs font-semibold">Riserva un Tavolo</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-espresso-900 hover:text-bronze focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream-100 border-t border-cream-200 px-6 py-6 space-y-4 text-center">
+            <a href="#storia" class="block text-sm tracking-wider uppercase font-medium hover:text-bronze py-2">La Storia</a>
+            <a href="#evoluzione" class="block text-sm tracking-wider uppercase font-medium hover:text-bronze py-2">L'Evoluzione</a>
+            <a href="#rituale" class="block text-sm tracking-wider uppercase font-medium hover:text-bronze py-2">Il Rituale</a>
+            <a href="#assaggi" class="block text-sm tracking-wider uppercase font-medium hover:text-bronze py-2">I Voli d'Assaggio</a>
+            <a href="#prenota" class="block w-full py-3 bg-espresso-900 text-cream-50 hover:bg-bronze transition-all rounded-md text-sm font-semibold">Riserva un Tavolo</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <!-- Visual background patterns suggesting wind, cold and luxury -->
+        <div class="absolute inset-0 z-0 opacity-40">
+            <div class="absolute top-1/4 left-10 w-96 h-96 bg-cream-200 rounded-full filter blur-[100px] pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-bronze-light/20 rounded-full filter blur-[100px] pointer-events-none"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto text-center z-10 py-12">
+            <span class="text-bronze uppercase tracking-[0.25em] text-xs font-semibold inline-block mb-4">La Nobile Alchimia Siciliana</span>
+            <h1 class="font-serif text-5xl md:text-8xl text-espresso-900 font-bold mb-6 leading-tight">
+                Prima del cucchiaio, <br>
+                <span class="italic font-normal text-bronze">c'è la storia.</span>
+            </h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-espresso-800/80 font-light leading-relaxed mb-10">
+                Non un semplice dessert gelato, ma un'opera d'arte nata dal ghiaccio dei vulcani e rifinita dal sole del Mediterraneo. Benvenuti nel rito quotidiano di Messina.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#storia" class="w-full sm:w-auto px-8 py-4 bg-espresso-900 hover:bg-bronze text-cream-50 text-sm font-semibold tracking-wider uppercase rounded-full transition-all shadow-lg hover:shadow-xl">
+                    Inizia il Viaggio
+                </a>
+                <a href="#assaggi" class="w-full sm:w-auto px-8 py-4 border border-espresso-800 text-espresso-900 hover:bg-cream-100 text-sm font-semibold tracking-wider uppercase rounded-full transition-all">
+                    Sperimenta gli Assaggi
+                </a>
+            </div>
+        </div>
+
+        <!-- Decorative scroll down indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-bounce">
+            <span class="text-[10px] tracking-widest uppercase text-bronze block mb-2">Scorri</span>
+            <i class="fa-solid fa-chevron-down text-bronze text-sm"></i>
+        </div>
+    </header>
+
+    <!-- SECTION 1: LA STORIA (IL PASSATO) -->
+    <section id="storia" class="py-24 bg-cream-100 border-y border-cream-200">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-bronze uppercase tracking-[0.25em] text-xs font-semibold">Le Origini e il Mito</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">Dalla Neve all'Eleganza</h2>
+                <div class="w-16 h-[2px] bg-bronze mx-auto mt-6"></div>
+            </div>
+
+            <!-- Grid Layout representing historical chapters -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Column: Big Atmospheric text with serif style -->
+                <div class="lg:col-span-5 space-y-6">
+                    <p class="font-serif text-3xl italic text-bronze-dark leading-relaxed">
+                        "E i Nivaroli correvano giù dai colli prima che il giorno potesse rubare il tesoro dei Peloritani."
+                    </p>
+                    <p class="text-espresso-800/90 leading-relaxed font-light">
+                        La storia della granita è un'epopea di termodinamica artigianale. Un tempo lusso destinato solo ai palati dei nobili, oggi la granita messinese è un patrimonio identitario celebrato per la sua inimitabile setosità.
+                    </p>
+                    <div class="pt-4">
+                        <span class="text-xs uppercase tracking-widest text-bronze font-bold block mb-1">Tecnica Tradizionale</span>
+                        <p class="text-sm text-espresso-800/70">Cremosa per assenza di mantecazione meccanica forzata: solo lento attrito naturale.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Timeline of History -->
+                <div class="lg:col-span-7 bg-cream-50 rounded-2xl p-8 md:p-10 shadow-sm border border-cream-200">
+                    <h3 class="font-serif text-2xl font-bold mb-8">Cronologia d'un Rito Secolare</h3>
+                    
+                    <div class="space-y-8 relative before:absolute before:inset-0 before:left-[17px] before:w-[2px] before:bg-cream-200">
+                        
+                        <!-- Timeline Item 1 -->
+                        <div class="relative pl-10 group cursor-pointer transition-all">
+                            <div class="absolute left-3 top-1 w-[10px] h-[10px] rounded-full bg-bronze group-hover:scale-150 transition-transform"></div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-bronze">Anno 1000 — Lo Sherbeth Arabo</span>
+                            <h4 class="font-serif text-lg font-bold text-espresso-900 mt-1">L'Antico Segreto d'Oriente</h4>
+                            <p class="text-sm text-espresso-800/80 font-light mt-2 hidden group-hover:block transition-all duration-300">
+                                Durante la dominazione araba, la Sicilia impara a dolcificare la neve con miele, succhi di agrumi e infusi di gelsomino. È l'alba spirituale del gelato moderno.
+                            </p>
+                            <span class="text-xs text-bronze underline mt-2 inline-block group-hover:hidden">Clicca per approfondire</span>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="relative pl-10 group cursor-pointer transition-all">
+                            <div class="absolute left-3 top-1 w-[10px] h-[10px] rounded-full bg-bronze group-hover:scale-150 transition-transform"></div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-bronze">Secolo XVI — I Nivaroli</span>
+                            <h4 class="font-serif text-lg font-bold text-espresso-900 mt-1">La Raccolta sui Monti Peloritani</h4>
+                            <p class="text-sm text-espresso-800/80 font-light mt-2 hidden group-hover:block transition-all duration-300">
+                                D'inverno, i "Nivaroli" raccoglievano la neve fresca sui monti di Messina, per conservarla in profonde buche di pietra (le neviere) protette da felci e terra. In estate, quel ghiaccio prezioso scendeva in città avvolto in teli di juta.
+                            </p>
+                            <span class="text-xs text-bronze underline mt-2 inline-block group-hover:hidden">Clicca per approfondire</span>
+                        </div>
+
+                        <!-- Timeline Item 3 -->
+                        <div class="relative pl-10 group cursor-pointer transition-all">
+                            <div class="absolute left-3 top-1 w-[10px] h-[10px] rounded-full bg-bronze group-hover:scale-150 transition-transform"></div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-bronze">Ottocento — Il Pozzetto Manuale</span>
+                            <h4 class="font-serif text-lg font-bold text-espresso-900 mt-1">L'Invenzione del Cristallo Perfetto</h4>
+                            <p class="text-sm text-espresso-800/80 font-light mt-2 hidden group-hover:block transition-all duration-300">
+                                La svolta avviene unendo ghiaccio grattato e sale marino all'interno di un mastello di legno contenente un cilindro di zinco ("pozzetto"). Girato a mano con una manovella, garantiva un raffreddamento uniforme senza cristallizzazione ruvida. Nasce il mitico "velluto freddo".
+                            </p>
+                            <span class="text-xs text-bronze underline mt-2 inline-block group-hover:hidden">Clicca per approfondire</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: L'EVOLUZIONE (IL PRESENTE & I NUOVI GUSTI) -->
+    <section id="evoluzione" class="py-24 bg-cream-50">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-bronze uppercase tracking-[0.25em] text-xs font-semibold">L'Avanguardia Gastronomica</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">Dall'Ortodossia all'Innovazione</h2>
+                <div class="w-16 h-[2px] bg-bronze mx-auto mt-6"></div>
+                <p class="text-espresso-800/70 mt-4 font-light">
+                    Mentre la tradizione custodisce gelosamente il limone e il caffè, la ricerca contemporanea esplora erbe botaniche e frutti insoliti.
+                </p>
+            </div>
+
+            <!-- Flavor Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-cream-100 rounded-2xl p-8 border border-cream-200 hover:border-bronze transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-cream-50 flex items-center justify-center text-bronze mb-6 group-hover:bg-espresso-900 group-hover:text-cream-50 transition-colors">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest text-bronze font-bold">La Trinità Sacra</span>
+                        <h3 class="font-serif text-2xl font-bold text-espresso-900 mt-2 mb-4">Il Caffè Solenne</h3>
+                        <p class="text-sm text-espresso-800/80 font-light leading-relaxed">
+                            Ottenuto da un espresso purissimo, rigorosamente dolcificato a freddo e servito sempre con un ricciolo generoso di panna fresca, montata tradizionalmente a mano senza addensanti.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-cream-200/50 flex justify-between text-xs text-bronze font-medium">
+                        <span>Consistenza: Micro-granulare</span>
+                        <span>Abbinamento: Brioche calda</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-cream-100 rounded-2xl p-8 border border-cream-200 hover:border-bronze transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-cream-50 flex items-center justify-center text-bronze mb-6 group-hover:bg-espresso-900 group-hover:text-cream-50 transition-colors">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest text-bronze font-bold">Gli Storici Botanici</span>
+                        <h3 class="font-serif text-2xl font-bold text-espresso-900 mt-2 mb-4">La Mandorla d'Avola Tostata</h3>
+                        <p class="text-sm text-espresso-800/80 font-light leading-relaxed">
+                            Mandorle siciliane tostate e macinate a pietra. Sprigionano note affumicate, floreali e terrose che bilanciano la dolcezza zuccherina, regalandoti un finale vellutato e lunghissimo.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-cream-200/50 flex justify-between text-xs text-bronze font-medium">
+                        <span>Consistenza: Setosa / Cremosa</span>
+                        <span>Abbinamento: Caffè d'orzo</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-cream-100 rounded-2xl p-8 border border-cream-200 hover:border-bronze transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-cream-50 flex items-center justify-center text-bronze mb-6 group-hover:bg-espresso-900 group-hover:text-cream-50 transition-colors">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest text-bronze font-bold">L'Avanguardia Moderna</span>
+                        <h3 class="font-serif text-2xl font-bold text-espresso-900 mt-2 mb-4">Gelsomino & Limone Sfumato</h3>
+                        <p class="text-sm text-espresso-800/80 font-light leading-relaxed">
+                            Un omaggio allo Sherbeth. L'olio essenziale del limone Interdonato spremuto a freddo incontra l'infuso notturno di fiori selvatici di gelsomino, sprigionando note freschissime e speziate.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-cream-200/50 flex justify-between text-xs text-bronze font-medium">
+                        <span>Consistenza: Cristallina fine</span>
+                        <span>Abbinamento: Focaccia dolce</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE FLIGHT COMPOSER (I VOLI D'ASSAGGIO) -->
+    <section id="assaggi" class="py-24 bg-cream-100 border-t border-cream-200">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-bronze uppercase tracking-[0.25em] text-xs font-semibold">L'Esperienza Esclusiva</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">Crea il Tuo "Volo d'Assaggio"</h2>
+                <div class="w-16 h-[2px] bg-bronze mx-auto mt-6"></div>
+                <p class="text-espresso-800/70 mt-4 font-light text-sm md:text-base">
+                    Un'esperienza importata dalla degustazione dei vini d'annata. Seleziona 3 gusti diversi per comporre il tuo trittico d'autore personalizzato e scopri come degustarli al meglio.
+                </p>
+            </div>
+
+            <!-- Interactive App Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Left: Flavor Selector -->
+                <div class="lg:col-span-5 space-y-4">
+                    <h3 class="font-serif text-xl font-bold text-espresso-900 mb-2">1. Seleziona 3 Capolavori</h3>
+                    <p class="text-xs text-espresso-800/60 mb-6">Clicca per aggiungere o rimuovere dal tuo vassoio.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        
+                        <!-- Flavor Btn 1 -->
+                        <button onclick="toggleFlavor('Caffè Intenso', '#4a3225', 'Sensazione profonda e tostata con note di cacao fondente.')" class="flavor-btn p-4 rounded-xl border border-cream-200 bg-cream-50 hover:border-bronze text-left transition-all flex flex-col justify-between h-32" data-flavor="Caffè Intenso">
+                            <span class="w-3 h-3 rounded-full bg-[#4a3225] block"></span>
+                            <span class="font-serif text-base font-bold text-espresso-900">Caffè Intenso</span>
+                        </button>
+
+                        <!-- Flavor Btn 2 -->
+                        <button onclick="toggleFlavor('Limone di Zafferia', '#f5e278', 'Taglio acido purissimo, rinfrescante con accenni di oli essenziali.')" class="flavor-btn p-4 rounded-xl border border-cream-200 bg-cream-50 hover:border-bronze text-left transition-all flex flex-col justify-between h-32" data-flavor="Limone di Zafferia">
+                            <span class="w-3 h-3 rounded-full bg-[#f5e278] block"></span>
+                            <span class="font-serif text-base font-bold text-espresso-900">Limone di Zafferia</span>
+                        </button>
+
+                        <!-- Flavor Btn 3 -->
+                        <button onclick="toggleFlavor('Mandorla Pizzuta', '#eed9be', 'Sapore rotondo, burroso e vagamente speziato di mandorle siciliane.')" class="flavor-btn p-4 rounded-xl border border-cream-200 bg-cream-50 hover:border-bronze text-left transition-all flex flex-col justify-between h-32" data-flavor="Mandorla Pizzuta">
+                            <span class="w-3 h-3 rounded-full bg-[#eed9be] block"></span>
+                            <span class="font-serif text-base font-bold text-espresso-900">Mandorla Pizzuta</span>
+                        </button>
+
+                        <!-- Flavor Btn 4 -->
+                        <button onclick="toggleFlavor('Gelso Nero Peloritano', '#6b2046', 'Selvatico, tannico al punto giusto ed elegantemente scuro.')" class="flavor-btn p-4 rounded-xl border border-cream-200 bg-cream-50 hover:border-bronze text-left transition-all flex flex-col justify-between h-32" data-flavor="Gelso Nero Peloritano">
+                            <span class="w-3 h-3 rounded-full bg-[#6b2046] block"></span>
+                            <span class="font-serif text-base font-bold text-espresso-900">Gelso Nero</span>
+                        </button>
+
+                        <!-- Flavor Btn 5 -->
+                        <button onclick="toggleFlavor('Pistacchio Bronte', '#8e9664', 'Sapidità vulcanica profonda, untuosità nobile e avvolgente.')" class="flavor-btn p-4 rounded-xl border border-cream-200 bg-cream-50 hover:border-bronze text-left transition-all flex flex-col justify-between h-32" data-flavor="Pistacchio Bronte">
+                            <span class="w-3 h-3 rounded-full bg-[#8e9664] block"></span>
+                            <span class="font-serif text-base font-bold text-espresso-900">Pistacchio Bronte</span>
+                        </button>
+
+                        <!-- Flavor Btn 6 -->
+                        <button onclick="toggleFlavor('Gelsomino Bianco', '#ffffff', 'Aroma floreale nobile e purissimo con persistenza retro-olfattiva.')" class="flavor-btn p-4 rounded-xl border border-cream-200 bg-cream-50 hover:border-bronze text-left transition-all flex flex-col justify-between h-32" data-flavor="Gelsomino Bianco">
+                            <span class="w-3 h-3 rounded-full bg-[#ffffff] border border-cream-200 block"></span>
+                            <span class="font-serif text-base font-bold text-espresso-900">Gelsomino</span>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Right: The Selected Flight Tray -->
+                <div class="lg:col-span-7 flex flex-col justify-between bg-cream-50 rounded-2xl p-8 border border-cream-200 shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-cream-200 pb-4 mb-8">
+                            <h3 class="font-serif text-xl font-bold text-espresso-900">2. Il Vassoio di Cristallo</h3>
+                            <span class="px-3 py-1 bg-cream-200 text-espresso-900 text-xs font-semibold rounded-full uppercase tracking-wider" id="selection-counter">0 di 3 Selezionati</span>
+                        </div>
+
+                        <!-- Tray visual with cup slots -->
+                        <div class="grid grid-cols-3 gap-4 mb-10 text-center">
+                            
+                            <!-- Slot 1 -->
+                            <div class="bg-cream-100 rounded-xl p-4 border border-dashed border-cream-200 flex flex-col items-center justify-center min-h-[160px] transition-all" id="slot-1">
+                                <div class="w-12 h-12 rounded-full bg-cream-50 border-2 border-dashed border-cream-200 flex items-center justify-center text-cream-200 mb-2" id="slot-1-cup">
+                                    <i class="fa-solid fa-glass-water text-lg"></i>
+                                </div>
+                                <span class="text-xs text-espresso-800/40 font-medium" id="slot-1-name">Vuoto</span>
+                            </div>
+
+                            <!-- Slot 2 -->
+                            <div class="bg-cream-100 rounded-xl p-4 border border-dashed border-cream-200 flex flex-col items-center justify-center min-h-[160px] transition-all" id="slot-2">
+                                <div class="w-12 h-12 rounded-full bg-cream-50 border-2 border-dashed border-cream-200 flex items-center justify-center text-cream-200 mb-2" id="slot-2-cup">
+                                    <i class="fa-solid fa-glass-water text-lg"></i>
+                                </div>
+                                <span class="text-xs text-espresso-800/40 font-medium" id="slot-2-name">Vuoto</span>
+                            </div>
+
+                            <!-- Slot 3 -->
+                            <div class="bg-cream-100 rounded-xl p-4 border border-dashed border-cream-200 flex flex-col items-center justify-center min-h-[160px] transition-all" id="slot-3">
+                                <div class="w-12 h-12 rounded-full bg-cream-50 border-2 border-dashed border-cream-200 flex items-center justify-center text-cream-200 mb-2" id="slot-3-cup">
+                                    <i class="fa-solid fa-glass-water text-lg"></i>
+                                </div>
+                                <span class="text-xs text-espresso-800/40 font-medium" id="slot-3-name">Vuoto</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Flight Notes Box -->
+                        <div class="bg-[#2c1b15]/5 rounded-xl p-6 border border-espresso-800/10" id="flight-notes">
+                            <h4 class="font-serif text-lg font-bold text-espresso-900 mb-2">Note Sensoriali</h4>
+                            <p class="text-sm text-espresso-800/80 font-light" id="notes-content">
+                                Scegli tre gusti per scoprire i dettagli della degustazione incrociata, la sequenza ideale e l'accompagnamento perfetto.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- CTA for Reservation with Custom Selected Flight -->
+                    <div class="mt-8 pt-6 border-t border-cream-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="text-left">
+                            <span class="text-xs text-espresso-800/60 block">Esperienza Degustazione</span>
+                            <span class="font-serif text-lg font-bold text-espresso-900" id="flight-price">—</span>
+                        </div>
+                        <button onclick="bookMyFlight()" id="flight-book-btn" disabled class="w-full sm:w-auto px-6 py-3 bg-espresso-900 hover:bg-bronze text-cream-50 text-xs font-semibold uppercase tracking-wider rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                            Prenota Degustazione
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: IL RITUALE DELLA BRIOCHE -->
+    <section id="rituale" class="py-24 bg-cream-50 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-bronze uppercase tracking-[0.25em] text-xs font-semibold">Galateo e Identità</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">La Brioche col Tuppo</h2>
+                <div class="w-16 h-[2px] bg-bronze mx-auto mt-6"></div>
+                <p class="text-espresso-800/70 mt-4 font-light text-sm md:text-base">
+                    Un connubio indissolubile. Sostituire la soffice brioche all'anice con un semplice biscotto è considerato un delitto gastronomico oltre lo Stretto.
+                </p>
+            </div>
+
+            <!-- Visual Explainer Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Anatomy Block 1 -->
+                <div class="bg-cream-100 rounded-2xl p-8 border border-cream-200 flex flex-col justify-between">
+                    <div>
+                        <span class="text-bronze font-serif text-3xl italic block mb-4">01.</span>
+                        <h3 class="font-serif text-xl font-bold text-espresso-900 mb-3">La Corona (Il Tuppo)</h3>
+                        <p class="text-sm text-espresso-800/80 font-light leading-relaxed">
+                            Simbolo erotico e ironico della brioche messinese. La regola impone che debba essere staccato rigorosamente a mano per primo, creando una sorta di cucchiaio commestibile per prelevare il primo strato superficiale di panna e granita.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Anatomy Block 2 -->
+                <div class="bg-cream-100 rounded-2xl p-8 border border-cream-200 flex flex-col justify-between">
+                    <div>
+                        <span class="text-bronze font-serif text-3xl italic block mb-4">02.</span>
+                        <h3 class="font-serif text-xl font-bold text-espresso-900 mb-3">L'Impasto all'Anice</h3>
+                        <p class="text-sm text-espresso-800/80 font-light leading-relaxed">
+                            A differenza del croissant sfogliato francese, la vera brioche col tuppo è un lievitato denso, leggermente aromatizzato all'anice e scorza di agrumi, perfetto per accogliere la granita liquida senza sciogliersi immediatamente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Anatomy Block 3 -->
+                <div class="bg-cream-100 rounded-2xl p-8 border border-cream-200 flex flex-col justify-between">
+                    <div>
+                        <span class="text-bronze font-serif text-3xl italic block mb-4">03.</span>
+                        <h3 class="font-serif text-xl font-bold text-espresso-900 mb-3">La Panna Doppia</h3>
+                        <p class="text-sm text-espresso-800/80 font-light leading-relaxed">
+                            Il vero intenditore ordina "Mezza con panna sotto e sopra". Lo strato inferiore isola il bicchiere e si fonde lentamente creando un latte di caffè o fragola cremosissimo, mentre lo strato superiore accoglie il tuppo inzuppato.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: CONTACT & BOOKING TABLE -->
+    <section id="prenota" class="py-24 bg-cream-100 border-t border-cream-200 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-bronze uppercase tracking-[0.25em] text-xs font-semibold">Esperienza Privata</span>
+                <h2 class="font-serif text-4xl font-bold mt-2">Riserva la Tua Sessione</h2>
+                <div class="w-16 h-[2px] bg-bronze mx-auto mt-6"></div>
+                <p class="text-espresso-800/70 mt-4 font-light">
+                    Presso il nostro Atelier nel centro storico di Messina, un maestro Nivarolo ti guiderà in una degustazione comparata di sei ricette storiche di granita.
+                </p>
+            </div>
+
+            <!-- Booking Form -->
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-6 bg-cream-50 p-8 md:p-12 rounded-2xl border border-cream-200 shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-espresso-900 mb-2">Nome Completo</label>
+                        <input type="text" required class="w-full px-4 py-3 bg-cream-100 border border-cream-200 rounded-lg focus:outline-none focus:border-bronze text-sm" placeholder="Es. Giuseppe Alibrandi">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-espresso-900 mb-2">Indirizzo Email</label>
+                        <input type="email" required class="w-full px-4 py-3 bg-cream-100 border border-cream-200 rounded-lg focus:outline-none focus:border-bronze text-sm" placeholder="Es. giuseppe@esempio.it">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-espresso-900 mb-2">Data Degustazione</label>
+                        <input type="date" required class="w-full px-4 py-3 bg-cream-100 border border-cream-200 rounded-lg focus:outline-none focus:border-bronze text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-espresso-900 mb-2">Orario</label>
+                        <select required class="w-full px-4 py-3 bg-cream-100 border border-cream-200 rounded-lg focus:outline-none focus:border-bronze text-sm text-espresso-900">
+                            <option>Seleziona orario</option>
+                            <option>Colazione — 09:30</option>
+                            <option>Mezzogiorno — 12:00</option>
+                            <option>Pomeriggio — 16:30</option>
+                            <option>Tramonto — 19:00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-espresso-900 mb-2">Ospiti</label>
+                        <select required class="w-full px-4 py-3 bg-cream-100 border border-cream-200 rounded-lg focus:outline-none focus:border-bronze text-sm text-espresso-900">
+                            <option>1 Ospite</option>
+                            <option selected>2 Ospiti</option>
+                            <option>3 Ospiti</option>
+                            <option>4 Ospiti</option>
+                            <option>Gruppo Privato (>5)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-4 bg-espresso-900 hover:bg-bronze text-cream-50 font-semibold uppercase tracking-widest text-xs rounded-full transition-all shadow-md">
+                        Invia Richiesta di Prenotazione
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- TOAST NOTIFICATION CONTAINER (Custom notification UI replaces browser alerts) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-espresso-900 text-cream-50 border border-bronze-light/30 px-6 py-4 rounded-xl shadow-2xl max-w-sm flex items-start gap-4">
+        <div class="text-bronze text-lg mt-0.5"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <h4 class="font-serif font-bold text-sm" id="toast-title">Notifica</h4>
+            <p class="text-xs text-cream-100/80 mt-1" id="toast-message">Messaggio di successo.</p>
+        </div>
+        <button onclick="hideToast()" class="text-cream-200/50 hover:text-cream-50 ml-auto">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- BOOKING CONFIRMATION MODAL -->
+    <div id="modal-booking" class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-espresso-900/40 backdrop-blur-sm">
+        <div class="bg-cream-50 border border-cream-200 max-w-md w-full rounded-2xl p-8 shadow-2xl relative">
+            <button onclick="toggleModal('modal-booking', false)" class="absolute top-4 right-4 text-espresso-900/60 hover:text-espresso-900">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 rounded-full bg-cream-100 border border-bronze text-bronze flex items-center justify-center mx-auto text-2xl mb-4">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-espresso-900">Richiesta Ricevuta</h3>
+                <p class="text-xs text-espresso-800/60 uppercase tracking-widest mt-1">Nivaroli Atelier Messina</p>
+            </div>
+            <div class="space-y-4 text-sm text-espresso-800/80 leading-relaxed font-light mb-6">
+                <p>Gentile Ospite,</p>
+                <p>abbiamo registrato con piacere il tuo interesse per la nostra esperienza sensoriale di degustazione. I nostri maestri Nivaroli verificheranno la disponibilità per la data selezionata.</p>
+                <p>Riceverai a breve una conferma formale all'indirizzo email indicato con tutti i dettagli e il codice d'accesso esclusivo all'Atelier.</p>
+            </div>
+            <button onclick="toggleModal('modal-booking', false)" class="w-full py-3 bg-espresso-900 hover:bg-bronze text-cream-50 text-xs font-semibold uppercase tracking-widest rounded-full transition-all">
+                Ho Compreso
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-espresso-900 text-cream-100 py-16 border-t border-bronze/20">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            
+            <div class="space-y-4">
+                <h3 class="font-serif text-2xl tracking-widest text-cream-50 font-bold">NIVAROLI<span class="text-bronze">.</span></h3>
+                <p class="text-sm text-cream-200/60 font-light leading-relaxed">
+                    Atelier della granita messinese. L'eccellenza artigianale riscoperta nei ritmi calmi della Sicilia d'altri tempi.
+                </p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-serif font-bold text-cream-50 text-lg">I Luoghi</h4>
+                <ul class="text-sm text-cream-200/60 space-y-2 font-light">
+                    <li>Via Garibaldi, 42 — Messina</li>
+                    <li>Porto Storico (Solo Estate)</li>
+                    <li>Spiaggia di Capo Peloro</li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-serif font-bold text-cream-50 text-lg">Navigazione</h4>
+                <ul class="text-sm text-cream-200/60 space-y-2 font-light uppercase tracking-wider text-xs">
+                    <li><a href="#storia" class="hover:text-bronze transition-colors">La Storia</a></li>
+                    <li><a href="#evoluzione" class="hover:text-bronze transition-colors">L'Evoluzione</a></li>
+                    <li><a href="#rituale" class="hover:text-bronze transition-colors">Il Rituale</a></li>
+                    <li><a href="#assaggi" class="hover:text-bronze transition-colors">Volo d'Assaggio</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="font-serif font-bold text-cream-50 text-lg">Resta in Contatto</h4>
+                <p class="text-xs text-cream-200/60 font-light">Iscriviti per ricevere le ricette dei nostri storici gusti stagionali.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Email" class="w-full px-4 py-2 bg-[#2c1b15] border border-bronze/30 rounded-l-lg text-sm text-cream-50 focus:outline-none focus:border-bronze">
+                    <button onclick="subscribeNewsletter()" class="bg-bronze hover:bg-bronze-dark text-cream-50 px-4 rounded-r-lg text-sm transition-all">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-cream-100/10 text-center text-xs text-cream-200/40">
+            <p>© 2026 Nivaroli S.r.l. - Tutti i diritti riservati. Progetto Culturale ed Esperienziale Messinese.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT FOR FLIGHT COMPOSER & INTERFACES -->
+    <script>
+        // Interactive Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // STATE MANAGER FOR THE TASTING FLIGHT COMPOSER
+        let selectedFlavors = [];
+
+        function toggleFlavor(name, colorHex, description) {
+            const index = selectedFlavors.findIndex(item => item.name === name);
+            const btn = document.querySelector(`[data-flavor="${name}"]`);
+            
+            if (index > -1) {
+                // Remove flavor
+                selectedFlavors.splice(index, 1);
+                if (btn) btn.classList.remove('border-bronze', 'bg-cream-100', 'scale-[1.02]');
+            } else {
+                // Add flavor only if we have under 3 selected
+                if (selectedFlavors.length >= 3) {
+                    showToast("Limite Selezioni", "Puoi selezionare un massimo di 3 gusti per il volo d'assaggio.", true);
+                    return;
+                }
+                selectedFlavors.push({ name, colorHex, description });
+                if (btn) btn.classList.add('border-bronze', 'bg-cream-100', 'scale-[1.02]');
+            }
+
+            updateTrayVisuals();
+        }
+
+        function updateTrayVisuals() {
+            const total = selectedFlavors.length;
+            document.getElementById('selection-counter').innerText = `${total} di 3 Selezionati`;
+
+            // Reset slots
+            for (let i = 1; i <= 3; i++) {
+                const slot = document.getElementById(`slot-${i}`);
+                const cup = document.getElementById(`slot-${i}-cup`);
+                const nameLabel = document.getElementById(`slot-${i}-name`);
+                
+                if (selectedFlavors[i - 1]) {
+                    const item = selectedFlavors[i - 1];
+                    // Update Slot with active flavor visual style
+                    nameLabel.innerText = item.name;
+                    nameLabel.classList.remove('text-espresso-800/40');
+                    nameLabel.classList.add('text-espresso-900', 'font-bold');
+                    
+                    cup.style.backgroundColor = item.colorHex;
+                    cup.style.borderColor = '#A37F55'; // bronze borders
+                    cup.innerHTML = `<i class="fa-solid fa-glass-water text-cream-50"></i>`;
+                    cup.classList.add('scale-110', 'rotate-3');
+                } else {
+                    // Empty Slot style
+                    nameLabel.innerText = "Vuoto";
+                    nameLabel.classList.add('text-espresso-800/40');
+                    nameLabel.classList.remove('text-espresso-900', 'font-bold');
+                    
+                    cup.style.backgroundColor = '';
+                    cup.style.borderColor = '';
+                    cup.innerHTML = `<i class="fa-solid fa-glass-water text-lg text-cream-200"></i>`;
+                    cup.classList.remove('scale-110', 'rotate-3');
+                }
+            }
+
+            // Update tasting note dynamic analysis
+            const notesEl = document.getElementById('notes-content');
+            const priceEl = document.getElementById('flight-price');
+            const bookBtn = document.getElementById('flight-book-btn');
+
+            if (total === 3) {
+                const names = selectedFlavors.map(f => f.name);
+                let evaluation = `Un abbinamento eccezionale. Ti suggeriamo di iniziare con <strong>${names[0]}</strong> per sensibilizzare le papille con i suoi tratti unici. `;
+                evaluation += `Successivamente, passa al corpo avvolgente di <strong>${names[1]}</strong>. `;
+                evaluation += `Infine, chiudi la sequenza con <strong>${names[2]}</strong> per una persistenza indimenticabile. `;
+                evaluation += `<br><br><span class="text-xs text-bronze-dark font-medium"><i class="fa-solid fa-cookie-bite mr-1"></i> Accompagnamento consigliato: Brioche classica col tuppo calda all'anice.</span>`;
+                
+                notesEl.innerHTML = evaluation;
+                priceEl.innerText = "€ 14,00 / Volo";
+                bookBtn.removeAttribute('disabled');
+            } else {
+                notesEl.innerHTML = `Scegli tre gusti per scoprire i dettagli della degustazione incrociata, la sequenza ideale e l'accompagnamento perfetto.`;
+                priceEl.innerText = "—";
+                bookBtn.setAttribute('disabled', 'true');
+            }
+        }
+
+        // CUSTOM TOAST NOTIFICATIONS (No Browser Alerts allowed)
+        function showToast(title, message, isError = false) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            
+            // Icon customization depending on state
+            const iconContainer = toast.querySelector('.text-bronze');
+            if (isError) {
+                iconContainer.innerHTML = `<i class="fa-solid fa-circle-exclamation text-red-500"></i>`;
+            } else {
+                iconContainer.innerHTML = `<i class="fa-solid fa-circle-check text-bronze"></i>`;
+            }
+
+            // Slide in animation
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                hideToast();
+            }, 5000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }
+
+        // TRIGGER FORM SUBMISSION
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            // Show dynamic confirmation Modal instead of alert
+            toggleModal('modal-booking', true);
+        }
+
+        function subscribeNewsletter() {
+            showToast("Iscrizione Effettuata", "Grazie per esserti iscritto! Riceverai presto le nostre lettere d'archivio.");
+        }
+
+        function bookMyFlight() {
+            if (selectedFlavors.length === 3) {
+                // Fill date or jump to book section with prepopulated message
+                showToast("Volo Pre-Selezionato", "Vassoio salvato con successo! Compila il modulo di seguito per riservare l'esperienza.");
+                document.getElementById('prenota').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // MODAL MANAGEMENT CONTROLS
+        function toggleModal(modalId, show) {
+            const modal = document.getElementById(modalId);
+            if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+```
